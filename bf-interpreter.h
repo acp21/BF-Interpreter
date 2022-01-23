@@ -8,4 +8,9 @@ typedef struct brackets{
     off_t second;
 } brackets_t;
 
+typedef struct node{
+    off_t offset;
+    node_t *next;
+} node_t;
+
 #endif

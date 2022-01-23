@@ -7,6 +7,7 @@
 int arr[ARR_SIZE];
 int ptr = 0;
 
+node_t current;
 
 int main(int argc, char **argv){
     if(argc < 2){
@@ -64,4 +65,17 @@ int main(int argc, char **argv){
     printf("\n");
     fclose(bf);
     return 0;
+}
+
+void push(node_t new){
+    if(&current == NULL){
+        current = new;
+    }
+    else{
+        current.next = &new;
+    }
+}
+
+node_t pop(node_t node){
+
 }
