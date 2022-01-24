@@ -7,7 +7,7 @@
 int arr[ARR_SIZE];
 int ptr = 0;
 
-node_t current;
+node_t *start;
 
 int main(int argc, char **argv){
     if(argc < 2){
@@ -67,15 +67,28 @@ int main(int argc, char **argv){
     return 0;
 }
 
-void push(node_t new){
-    if(&current == NULL){
-        current = new;
+void push(node_t new, node_t *current){
+    if(current == NULL){
+        *current = new;
+    }
+    else if(current->next == NULL){
+        current->next = &new;
     }
     else{
-        current.next = &new;
+        push(new, current->next);
     }
 }
 
-node_t pop(node_t node){
-
+node_t pop(node_t *current){
+    if(current == NULL){
+        return *current;
+    }
+    else if(current->next == NULL){
+        node_t copy = *current;
+        current = NULL;
+        return copy;
+    }
+    else{
+        pop(current->next);
+    }
 }
